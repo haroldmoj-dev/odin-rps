@@ -53,12 +53,17 @@ function playGame(playerChoice) {
 
 let playerScore = 0;
 let computerScore = 0;
-
+let modeButton = document.querySelector(".mode");
 let playerScoreText = document.querySelector(".playerScore");
 let computerScoreText = document.querySelector(".computerScore");
 let buttons = document.querySelectorAll("button");
 let outputDiv = document.querySelector(".output");
 let promptText = document.querySelector(".prompt");
+
+modeButton.addEventListener("click", () => {
+    let body = document.body;
+    body.classList.toggle("dark-mode");
+});
 
 buttons.forEach((button) => {
     button.addEventListener("click", () => {
@@ -66,6 +71,8 @@ buttons.forEach((button) => {
         playGame(playerChoice);
     });
 });
+
+
 
 
 
