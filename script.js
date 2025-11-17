@@ -11,8 +11,6 @@ function getComputerChoice(min = 1, max = 3) {
 function playRound(playerChoice, computerChoice){
     let promptText = document.createElement("p");
     promptText.classList.toggle("prompt");
-    output.appendChild(promptText);
-
     if (playerChoice === computerChoice) {
         promptText.textContent = `TIE! Your ${playerChoice} does not beat ${computerChoice}.`;
     } else if (
@@ -32,6 +30,7 @@ function playRound(playerChoice, computerChoice){
         playerScore++;
         playerScoreText.textContent = playerScore;
     }
+    output.prepend(promptText);
 
     if (playerScore === 5 || computerScore === 5) {
         buttons.forEach((button) => {
@@ -45,12 +44,12 @@ function playRound(playerChoice, computerChoice){
         } else  {
             winnerText.textContent = "Computer Wins the Game!";
         }
-        output.appendChild(winnerText);
+        output.prepend(winnerText);
         
         let playAgainButton = document.createElement("button");
         playAgainButton.classList.toggle("playAgain");
         playAgainButton.textContent = "Play Again";
-        output.appendChild(playAgainButton);
+        output.prepend(playAgainButton);
 
         playAgainButton.addEventListener("click", () => {
             // reset everything
