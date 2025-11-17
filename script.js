@@ -31,6 +31,7 @@ function playRound(playerChoice, computerChoice){
 
     if (playerScore === 5 || computerScore === 5) {
         let winnerText = document.createElement("p");
+        winnerText.classList.add("winner");
         if (playerScore === 5) {
             winnerText.textContent = "Player Wins the Game!";
         } else  {
