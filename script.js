@@ -9,6 +9,10 @@ function getComputerChoice(min = 1, max = 3) {
 }
 
 function playRound(playerChoice, computerChoice){
+    let promptText = document.createElement("p");
+    promptText.classList.toggle("prompt");
+    output.appendChild(promptText);
+
     if (playerChoice === computerChoice) {
         promptText.textContent = `TIE! Your ${playerChoice} does not beat ${computerChoice}.`;
     } else if (
@@ -30,6 +34,10 @@ function playRound(playerChoice, computerChoice){
     }
 
     if (playerScore === 5 || computerScore === 5) {
+        buttons.forEach((button) => {
+            button.disabled = true;
+        });
+
         let winnerText = document.createElement("p");
         winnerText.classList.add("winner");
         if (playerScore === 5) {
@@ -37,9 +45,23 @@ function playRound(playerChoice, computerChoice){
         } else  {
             winnerText.textContent = "Computer Wins the Game!";
         }
-        outputDiv.appendChild(winnerText);
-        buttons.forEach((button) => {
-            button.disabled = true;
+        output.appendChild(winnerText);
+        
+        let playAgainButton = document.createElement("button");
+        playAgainButton.classList.toggle("playAgain");
+        playAgainButton.textContent = "Play Again";
+        output.appendChild(playAgainButton);
+
+        playAgainButton.addEventListener("click", () => {
+            // reset everything
+            buttons.forEach((button) => {
+                button.disabled = false;
+            });
+            playerScore = 0;
+            computerScore = 0;
+            playerScoreText.textContent = "0";
+            computerScoreText.textContent = "0";
+            output.innerHTML = "";
         });
     }
 }
@@ -49,16 +71,13 @@ function playGame(playerChoice) {
     playRound(playerChoice, computerChoice);
 }
 
-////////////////////////////////////////////////////////////////////
-
 let playerScore = 0;
 let computerScore = 0;
+let output = document.querySelector(".output");
 let modeButton = document.querySelector(".mode");
 let playerScoreText = document.querySelector(".playerScore");
 let computerScoreText = document.querySelector(".computerScore");
 let buttons = document.querySelectorAll("button");
-let outputDiv = document.querySelector(".output");
-let promptText = document.querySelector(".prompt");
 
 modeButton.addEventListener("click", () => {
     let body = document.body;

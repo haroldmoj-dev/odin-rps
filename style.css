@@ -38,9 +38,17 @@ body {
     cursor: pointer;
 }
 
-h1, h2, .scores, .buttons, .prompt, .winner {
+h1, h2, .scores, .buttons, .winner {
     text-align: center;
     margin-bottom: 1rem;
+}
+
+.output {
+    text-align: center;
+}
+
+.prompt {
+    margin-bottom: 0.5rem;
 }
 
 .scores {
@@ -52,15 +60,16 @@ h1, h2, .scores, .buttons, .prompt, .winner {
     gap: 1rem;
 }
 
-button {
+.choice {
     height: 8rem;
     width: 8rem;
-}
-
-.output {
-    height: 3.5rem;
+    border-radius: 1rem;
 }
 
 .winner {
     font-weight: bold;
+}
+
+.playAgain {
+    padding: 0.5rem 1rem;
 }
